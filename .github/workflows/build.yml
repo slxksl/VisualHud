@@ -21,8 +21,9 @@ jobs:
           if [ -f ChatScreenMixin.java ]; then cp ChatScreenMixin.java $M/; fi
           if [ -f fabric.mod.json ]; then cp fabric.mod.json $R/; fi
           if [ -f hudmenu.mixins.json ]; then cp hudmenu.mixins.json $R/; fi
-          if [ -f inter.otf ]; then cp inter.otf $F/; fi
-          if [ -f ui.json ]; then cp ui.json $F/; fi
+          if [ -f inter.ttf ]; then cp inter.ttf $F/; fi
+          rm -f $F/inter.otf
+          printf '%s\n' '{' '  "providers": [' '    {' '      "type": "ttf",' '      "file": "hudmenu:inter.ttf",' '      "shift": [0.0, 0.0],' '      "size": 10.0,' '      "oversample": 6.0' '    }' '  ]' '}' > $F/ui.json
           find src -type f | sort
       - uses: actions/setup-java@v4
         with:
