@@ -8,6 +8,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Arrange files
+        run: |
+          C=src/main/java/net/brsk/hudmenu/client
+          M=src/main/java/net/brsk/hudmenu/mixin
+          R=src/main/resources
+          F=src/main/resources/assets/hudmenu/font
+          mkdir -p $C $M $R $F
+          for f in HudAddScreen IconData Icons Shapes Theme UiFont; do
+            if [ -f $f.java ]; then cp $f.java $C/; fi
+          done
+          if [ -f ChatScreenMixin.java ]; then cp ChatScreenMixin.java $M/; fi
+          if [ -f fabric.mod.json ]; then cp fabric.mod.json $R/; fi
+          if [ -f hudmenu.mixins.json ]; then cp hudmenu.mixins.json $R/; fi
+          if [ -f inter.otf ]; then cp inter.otf $F/; fi
+          if [ -f ui.json ]; then cp ui.json $F/; fi
+          find src -type f | sort
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
