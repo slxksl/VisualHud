@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "hudmenu",
+  "version": "1.0.0",
+  "name": "HUD Add Menu",
+  "description": "A dark, red-accented HUD component menu opened with right-click while chat is open.",
+  "environment": "client",
+  "mixins": [
+    "hudmenu.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.2",
+    "minecraft": "26.1.2"
+  }
+}
